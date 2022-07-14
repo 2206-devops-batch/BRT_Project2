@@ -1,8 +1,11 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
         stage('AMI_Agent') {
+            agent {
+                label 'AMI_Agent'
+            }
             steps {
                 // Get some code from a GitHub repository
                 sh 'whoami'
@@ -22,6 +25,7 @@ pipeline {
             }
         }
         stage('after ami') {
+            agent any
             steps {
                 sh 'whoami'
                 sh 'pwd'
