@@ -5,10 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
+                sh 'whoami'
                 git 'https://github.com/2206-devops-batch/Roderick-Project1.git'
 
                 // Run venv
-                sh "python3 -m venv .venv"
+                // sh "python3 -m venv .venv"
                 //tests print
                 sh "echo This is inside the jenkins file"
 
@@ -21,6 +22,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh 'whoami'
                 sh "echo this is inside the jenkins console"
             }
         }
