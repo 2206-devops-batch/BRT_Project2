@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('AMI_Agent') {
             steps {
                 // Get some code from a GitHub repository
                 sh 'whoami'
+                sh 'pwd'
                 git 'https://github.com/2206-devops-batch/Roderick-Project1.git'
 
                 // Run venv
@@ -20,9 +21,10 @@ pipeline {
                 sh "python3 -m pytest app-test.py"
             }
         }
-        stage('Test') {
+        stage('after ami') {
             steps {
                 sh 'whoami'
+                sh 'pwd'
                 sh "echo this is inside the jenkins console"
             }
         }
