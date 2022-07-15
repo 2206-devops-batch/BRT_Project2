@@ -21,7 +21,7 @@ pipeline {
                 sh "pip3 install -r requirements-dev.txt"
                 
                 // Run pytest
-                sh "python3 -m pytest app-test.py"
+                sh "python3 -m pytest test-app.py"
             }
         }
         stage('after ami') {
