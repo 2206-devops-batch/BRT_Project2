@@ -2,9 +2,9 @@ pipeline {
     agent none
 
     stages {
-        stage('myjenkinsagent') {
+        stage('AMI_Agent') {
             agent {
-                label 'AMI_Agent'
+                label 'myjenkinsagent'
             }
             steps {
                 // Get some code from a GitHub repository
