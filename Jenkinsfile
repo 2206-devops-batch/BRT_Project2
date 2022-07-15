@@ -11,7 +11,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 checkout([$class: 'GitSCM', branches: [[name: '*/bs']],
-    userRemoteConfigs: [[url: 'https://github.com/2206-devops-batch/BRT_Project2']]])
+                    userRemoteConfigs: [[url: 'https://github.com/2206-devops-batch/BRT_Project2']]])
                 // Run venv
                 // sh "python3 -m venv .venv"
                 //tests print
