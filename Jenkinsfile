@@ -2,7 +2,7 @@ pipeline {
     agent none
 
     stages {
-        stage('AMI_Agent') {
+        stage('myjenkinsagent') {
             agent {
                 label 'AMI_Agent'
             }
