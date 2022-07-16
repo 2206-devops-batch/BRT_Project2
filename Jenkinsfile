@@ -15,7 +15,7 @@ pipeline {
 
                 // Run pip install
                 sh "pip3 install -r requirements-dev.txt"
-                
+                sh 'docker info'
                 // Run pytest
                 sh "python3 -m pytest test-app.py"
                 sh 'echo "will i run?"'
