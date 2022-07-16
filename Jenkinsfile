@@ -27,7 +27,13 @@ pipeline {
         failure { 
             echo 'I will always say Hello again!'
         }
-        success { 
+        success {
+            agent {
+                label 'myjenkinsagent'
+            }
+            steps {
+                // This only runs if pytest passes!
+                // build new image
                 sh 'whoami'
                 sh 'pwd'
                 sh 'ls -last'
@@ -35,6 +41,7 @@ pipeline {
                 sh 'docker push bryonsmith/flaskapp-demo:v1'
 
                 sh 'echo "done! **********************************************************"'
+            } 
         }
     }
 
