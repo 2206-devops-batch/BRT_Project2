@@ -12,16 +12,14 @@ pipeline {
                 sh 'pwd'
                 checkout([$class: 'GitSCM', branches: [[name: '*/bs']],
                     userRemoteConfigs: [[url: 'https://github.com/2206-devops-batch/BRT_Project2']]])
-                // Run venv
-                // sh "python3 -m venv .venv"
-                //tests print
-                sh "echo This is inside the jenkins file"
 
                 // Run pip install
                 sh "pip3 install -r requirements-dev.txt"
                 
                 // Run pytest
                 sh "python3 -m pytest test-app.py"
+                sh 'echo "will i run?"'
+                sh 'ls -last'
             }
         }
         stage('Push To Docker') {
@@ -29,10 +27,12 @@ pipeline {
                 label 'myjenkinsagent'
             }
             steps {
-                sh 'ls -last'
+                sh 'whoami'
                 sh 'pwd'
-                sh 'cat Dockerfile'
-                sh "echo *******************************************************************"
+                sh 'ls -last'
+                //  clean old docker images
+                // sh 'docker build -t flaskapp .'
+                // sh 'docker images'
             }
         }
 
