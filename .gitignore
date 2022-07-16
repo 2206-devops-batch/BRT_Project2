@@ -1,3 +1,5 @@
 .ssh
 .venv
 jenkins_data
+agent*
+!agents
