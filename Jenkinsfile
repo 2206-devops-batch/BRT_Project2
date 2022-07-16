@@ -15,11 +15,13 @@ pipeline {
 
                 // Run pip install
                 sh "pip3 install -r requirements-dev.txt"
-                sh 'docker info'
                 // Run pytest
                 sh "python3 -m pytest test-app.py"
                 sh 'echo "will i run?"'
                 sh 'ls -last'
+                sh 'docker info'
+                sh 'docker build -t flaskapp . < Dockerfile'
+                sh 'docker push bryonsmith/flaskapp'
             }
         }
         // stage('Push To Docker') {
