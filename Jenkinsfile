@@ -22,19 +22,19 @@ pipeline {
                 sh 'ls -last'
             }
         }
-        stage('Push To Docker') {
-            agent {
-                label 'myjenkinsagent'
-            }
-            steps {
-                sh 'whoami'
-                sh 'pwd'
-                sh 'ls -last'
-                //  clean old docker images
-                // sh 'docker build -t flaskapp .'
-                // sh 'docker images'
-            }
-        }
+        // stage('Push To Docker') {
+        //     agent {
+        //         label 'myjenkinsagent'
+        //     }
+        //     steps {
+        //         sh 'whoami'
+        //         sh 'pwd'
+        //         sh 'ls -last'
+        //         //  clean old docker images
+        //         // sh 'docker build -t flaskapp .'
+        //         // sh 'docker images'
+        //     }
+        // }
 
     }
 }
