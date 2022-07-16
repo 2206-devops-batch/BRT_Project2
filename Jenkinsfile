@@ -24,12 +24,15 @@ pipeline {
                 sh "python3 -m pytest test-app.py"
             }
         }
-        stage('after ami') {
-            agent any
+        stage('Push To Docker') {
+            agent {
+                label 'myjenkinsagent'
+            }
             steps {
-                sh 'whoami'
+                sh 'ls -last'
                 sh 'pwd'
-                sh "echo this is inside the jenkins console"
+                sh 'cat Dockerfile'
+                sh "echo *******************************************************************"
             }
         }
 
