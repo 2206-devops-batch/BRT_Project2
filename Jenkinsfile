@@ -25,23 +25,27 @@ pipeline {
     }
     post { 
         failure { 
-            echo 'I will always say Hello again!'
+            echo 'I say failure!'
         }
         success {
-            agent {
-                label 'myjenkinsagent'
-            }
-            steps {
-                // This only runs if pytest passes!
-                // build new image
-                sh 'whoami'
-                sh 'pwd'
-                sh 'ls -last'
-                sh 'docker build -t bryonsmith/flaskapp-demo:v1 . < Dockerfile'
-                sh 'docker push bryonsmith/flaskapp-demo:v1'
+            stages {
+                stage {
+                    agent {
+                        label 'myjenkinsagent'
+                    }
+                    steps {
+                        // This only runs if pytest passes!
+                        // build new image
+                        sh 'whoami'
+                        sh 'pwd'
+                        sh 'ls -last'
+                        sh 'docker build -t bryonsmith/flaskapp-demo:v1 . < Dockerfile'
+                        sh 'docker push bryonsmith/flaskapp-demo:v1'
 
-                sh 'echo "done! **********************************************************"'
-            } 
+                        sh 'echo "done! **********************************************************"'
+                    } 
+                }
+            }
         }
     }
 
