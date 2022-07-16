@@ -17,26 +17,25 @@ pipeline {
                 sh "pip3 install -r requirements-dev.txt"
                 // Run pytest
                 sh "python3 -m pytest test-app.py"
-                sh 'echo "will i run?"'
-                sh 'ls -last'
-                sh 'docker info'
-                sh 'docker build -t flaskapp . < Dockerfile'
-                sh 'docker push bryonsmith/flaskapp'
+                
+                // This only runs if pytest passes!
+                // build new image
             }
         }
-        // stage('Push To Docker') {
-        //     agent {
-        //         label 'myjenkinsagent'
-        //     }
-        //     steps {
-        //         sh 'whoami'
-        //         sh 'pwd'
-        //         sh 'ls -last'
-        //         //  clean old docker images
-        //         // sh 'docker build -t flaskapp .'
-        //         // sh 'docker images'
-        //     }
-        // }
-
     }
+    post { 
+        failure { 
+            echo 'I will always say Hello again!'
+        }
+        success { 
+                sh 'whoami'
+                sh 'pwd'
+                sh 'ls -last'
+                sh 'docker build -t bryonsmith/flaskapp-demo:v1 . < Dockerfile'
+                sh 'docker push bryonsmith/flaskapp-demo:v1'
+
+                sh 'echo "done! **********************************************************"'
+        }
+    }
+
 }
