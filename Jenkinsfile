@@ -29,7 +29,7 @@ pipeline {
         }
         success {
             stages {
-                stage {
+                stage('AMI_AGENT_SUCCESS') {
                     agent {
                         label 'myjenkinsagent'
                     }
