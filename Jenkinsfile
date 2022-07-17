@@ -16,7 +16,9 @@ pipeline {
                 // Run pip install
                 sh "pip3 install -r requirements-dev.txt"
                 // Run pytest
-                sh "python3 -m pytest test-app.py"
+                // sh "python3 -m pytest test-app.py"
+                sh 'chmod +x dockerpush.sh'
+                sh '. dockerpush.sh'
                 
                 // This only runs if pytest passes!
                 // build new image
@@ -28,7 +30,7 @@ pipeline {
             echo 'Pytest Failed!'
         }
         success {
-            echo "Success!!!!"
+            echo "Success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         }
     }
 
