@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
+	}
 
     stages {
         stage('AMI_Agent') {
