@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('AMI_Agent') {
             agent {
-                label 'myjenkinsagent'
+                label 'jenkins-agent'
             }
             steps {
                 // Get some code from a GitHub repository
