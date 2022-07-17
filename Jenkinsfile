@@ -17,10 +17,10 @@ pipeline {
                 sh "pip3 install -r requirements-dev.txt"
                 // Run pytest
                 // sh "python3 -m pytest test-app.py"
-                sh 'chmod +x dockerpush.sh'
+                sh 'chmod +x ./dockerpush.sh'
                 sh 'ls -last'
                 // build new image
-                sh '. dockerpush.sh'
+                sh '. ./dockerpush.sh'
                 
             }
         }
