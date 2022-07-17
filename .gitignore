@@ -1,0 +1,6 @@
+.ssh
+.venv
+jenkins_data
+agent1
+agent2
+!agents

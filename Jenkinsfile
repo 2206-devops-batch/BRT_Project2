@@ -1,29 +1,39 @@
 pipeline {
-    agent any
+    agent none
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
+	}
 
     stages {
-        stage('Build') {
+        stage('AMI_Agent') {
+            agent {
+                label 'jenkins-agent'
+            }
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/2206-devops-batch/Roderick-Project1.git'
-
-                // Run venv
-                sh "python3 -m venv .venv"
-                //tests print
-                sh "echo This is inside the jenkins file"
+                sh 'whoami'
+                sh 'pwd'
+                checkout([$class: 'GitSCM', branches: [[name: '*/bs']],
+                    userRemoteConfigs: [[url: 'https://github.com/2206-devops-batch/BRT_Project2']]])
 
                 // Run pip install
-                sh "pip3 install -r requirements-dev.txt"
-                
+                sh "pip3 install -r ./requirements-dev.txt"
                 // Run pytest
-                sh "python3 -m pytest app-test.py"
+                // sh "python3 -m pytest test-app.py"
+                sh 'chmod +x ./dockerpush.sh'
+                sh 'ls -last'
+                // build new image if pytest passes.
+                sh '. ./dockerpush.sh'
             }
         }
-        stage('Test') {
-            steps {
-                sh "echo this is inside the jenkins console"
-            }
-        }
-
     }
+    post { 
+        failure { 
+            echo 'Pytest Failed!'
+        }
+        success {
+            echo "Success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        }
+    }
+
 }
