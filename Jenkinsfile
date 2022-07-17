@@ -25,27 +25,10 @@ pipeline {
     }
     post { 
         failure { 
-            echo 'I say failure!'
+            echo 'Pytest Failed!'
         }
         success {
-            stages {
-                stage('AMI_AGENT_SUCCESS') {
-                    agent {
-                        label 'myjenkinsagent'
-                    }
-                    steps {
-                        // This only runs if pytest passes!
-                        // build new image
-                        sh 'whoami'
-                        sh 'pwd'
-                        sh 'ls -last'
-                        sh 'docker build -t bryonsmith/flaskapp-demo:v1 . < Dockerfile'
-                        sh 'docker push bryonsmith/flaskapp-demo:v1'
-
-                        sh 'echo "done! **********************************************************"'
-                    } 
-                }
-            }
+            echo "Success!!!!"
         }
     }
 
