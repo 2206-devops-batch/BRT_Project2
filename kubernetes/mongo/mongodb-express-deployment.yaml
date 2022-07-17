@@ -1,19 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb-express
+  name: mongo-express
   labels:
-    app: mongodb-express
+    app: mongo-express
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb-express
+      app: mongo-express
   template:
     metadata:
       labels:
-        app: mongodb-express
-        editor: vscode
+        app: mongo-express
     spec:
       containers:
       - name: mongo-express
@@ -41,7 +40,7 @@ spec:
         - name: ME_CONFIG_MONGODB_SERVER
           valueFrom:
             configMapKeyRef:
-              name: mongodb-config
+              name: mongodb-configmap
               key: database_url
 ---
 kind: Service
@@ -56,4 +55,4 @@ spec:
   - protocol: TCP
     port:  8081
     targetPort:  8081
-    nodePort: 30000
+    nodePort: 31010

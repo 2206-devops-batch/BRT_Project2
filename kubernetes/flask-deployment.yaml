@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: python:3.10.5-slim-bullseye
+        image: bryonsmith/flaskapp-demo:v1
         resources:
           limits:
             memory: 512Mi
