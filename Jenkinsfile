@@ -18,10 +18,10 @@ pipeline {
                 // Run pytest
                 // sh "python3 -m pytest test-app.py"
                 sh 'chmod +x dockerpush.sh'
+                sh 'ls -last'
+                // build new image
                 sh '. dockerpush.sh'
                 
-                // This only runs if pytest passes!
-                // build new image
             }
         }
     }
