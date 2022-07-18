@@ -15,7 +15,7 @@ spec:
         app: flaskapp
     spec:
       containers:
-      - name: flaskimage
+      - name: flaskapp
         image: bryonsmith/flaskapp-demo:v1
         ports:
         - containerPort: 5000
