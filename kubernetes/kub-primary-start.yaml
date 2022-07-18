@@ -23,9 +23,30 @@ managedNodeGroups:
 - name: primary
   spot: true
   instanceType: t2.small
-  nodes: 2
   ssh:
     allow: true
     publicKeyName: Kubernetes_Cluster
   tags:
       nodegroup-role: my-worker
+
+nodeGroups:
+  - name: primary
+    labels: master-
+    instanceType: t2.small
+    desiredCapacity: 3
+    ssh:
+      allow: true
+      publicKeyName: Kubernetes_Cluster
+    tags:
+      nodegroup-role: my-worker
+
+  - name: worker
+    labels: worker
+    instanceType: t2.small
+    desiredCapacity: 3
+    ssh:
+      allow: true
+      publicKeyName: Kubernetes_Cluster
+    tags:
+      nodegroup-role: my-worker
+
