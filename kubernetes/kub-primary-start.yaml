@@ -23,6 +23,7 @@ managedNodeGroups:
 - name: primary
   spot: true
   instanceType: t2.small
+  desiredCapacity: 1
   minSize: 3
   maxSize: 6
   ssh:
