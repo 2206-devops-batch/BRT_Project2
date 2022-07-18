@@ -4,10 +4,10 @@ kind: ClusterConfig
 
 metadata:
   name: flaskapp
-  region: ${AWS_REGION}
+  region: us-east-1
   version: "1.22"
 
-# availabilityZones: ["${AZS[0]}", "${AZS[1]}", "${AZS[2]}"]
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
 
 managedNodeGroups:
 - name: primary
