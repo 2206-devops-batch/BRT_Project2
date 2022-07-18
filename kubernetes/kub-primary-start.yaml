@@ -19,16 +19,6 @@ vpc:
       us-east-1e: { id: subnet-011d325c66a1dc066 }
       us-east-1f: { id: subnet-00bf0529cf006941c }
 
-managedNodeGroups:
-- name: primary
-  spot: true
-  instanceType: t2.small
-  ssh:
-    allow: true
-    publicKeyName: Kubernetes_Cluster
-  tags:
-      nodegroup-role: my-worker
-
 nodeGroups:
   - name: primary-worker
     labels: { role: master }
