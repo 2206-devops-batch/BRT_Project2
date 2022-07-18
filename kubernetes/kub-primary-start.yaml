@@ -23,9 +23,7 @@ managedNodeGroups:
 - name: primary
   spot: true
   instanceType: t2.small
-  desiredCapacity: 2
-  minSize: 3
-  maxSize: 6
+  nodes: 2
   ssh:
     allow: true
     publicKeyName: Kubernetes_Cluster
