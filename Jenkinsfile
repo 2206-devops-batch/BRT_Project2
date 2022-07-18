@@ -27,6 +27,7 @@ pipeline {
             }
         }
     }
+    
     post { 
         failure { 
             echo 'Pytest Failed!'
