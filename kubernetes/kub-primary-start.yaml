@@ -30,7 +30,7 @@ managedNodeGroups:
       nodegroup-role: my-worker
 
 nodeGroups:
-  - name: primary
+  - name: primary-worker
     labels: { role: master }
     instanceType: t2.small
     desiredCapacity: 3
@@ -38,7 +38,7 @@ nodeGroups:
       allow: true
       publicKeyName: Kubernetes_Cluster
     tags:
-      nodegroup-role: my-worker
+      nodegroup-role: my-master
   - name: worker
     labels: { role: worker }
     instanceType: t2.small
