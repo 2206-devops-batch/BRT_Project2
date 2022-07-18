@@ -39,7 +39,6 @@ nodeGroups:
       publicKeyName: Kubernetes_Cluster
     tags:
       nodegroup-role: my-worker
-
   - name: worker
     labels: worker
     instanceType: t2.small
