@@ -23,7 +23,7 @@ pipeline {
                 sh 'chmod +x ./dockerpush.sh'
                 sh 'ls -last'
                 // build new image if pytest passes.
-                sh '. ./dockerpush.sh'
+                // sh '. ./dockerpush.sh'
             }
         }
         stage('Jenkins') {
@@ -35,7 +35,8 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 sh 'which kubectl'
-                sh "kubectl set image deployment/flask-deployment flaskimage=bryonsmith/flaskapp-demo:$VERSION"
+                sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:beb44ea4d9b16040fa774bfce0acf65fadd6e0dd"
+                // sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:$VERSION"
             }
         }
     }
