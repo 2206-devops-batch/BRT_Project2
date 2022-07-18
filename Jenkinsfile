@@ -32,7 +32,10 @@ pipeline {
                 VERSION = sh(returnStdout:true,script:'git log -1 --pretty=format:"%H"').trim() 
             }
             steps {
-               sh "kubectl set image deployment/flask-deployment flaskimage=\"bryonsmith/flaskapp-demo:$VERSION\""
+                sh 'whoami'
+                sh 'pwd'
+                sh 'which kubectl'
+                sh "kubectl set image deployment/flask-deployment flaskimage=bryonsmith/flaskapp-demo:$VERSION"
             }
         }
     }
