@@ -31,7 +31,7 @@ managedNodeGroups:
 
 nodeGroups:
   - name: primary
-    labels: master-
+    labels: { role: master }
     instanceType: t2.small
     desiredCapacity: 3
     ssh:
@@ -40,7 +40,7 @@ nodeGroups:
     tags:
       nodegroup-role: my-worker
   - name: worker
-    labels: worker
+    labels: { role: worker }
     instanceType: t2.small
     desiredCapacity: 3
     ssh:
