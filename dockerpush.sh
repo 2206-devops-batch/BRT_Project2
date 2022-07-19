@@ -4,16 +4,22 @@ pwd
 # run python test
 python3 -m pytest test-app.py
 
-COMMIT="$(git log -1 --pretty=format:"%s")"
-ROLLBACK="$(echo "$COMMIT" | grep -i "rollback")"
 
-if [ -z "$ROLLBACK" ]; then
-echo "inside rollback block"
-fi
 
 
 # This only runs if pytest passes!
 if [[ $? -eq 0 ]]; then
+
+COMMIT="$(git log -1 --pretty=format:"%s")"
+ROLLBACK="$(echo "$COMMIT" | grep -i "rollback")"
+# if rollback empty run loop
+if [[ -z "$ROLLBACK" ]]; then
+echo "inside rollback block"
+# run this if rollback is called.
+else
+echo "inside else block"
+fi
+
 # VERSION="$(git log -1 --pretty=format:"%H")"
 # echo $VERSION
 # docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
