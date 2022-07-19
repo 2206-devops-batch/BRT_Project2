@@ -26,21 +26,21 @@ pipeline {
                 sh '. ./dockerpush.sh'
             }
         }
-        stage('Jenkins') {
-            agent any
-            environment {
-                VERSION = sh(returnStdout:true,script:'git log -1 --pretty=format:"%H"').trim() 
-            }
-            steps {
-                sh 'whoami'
-                sh 'pwd'
-                sh 'which kubectl'
-                sh ''
-                // sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:beb44ea4d9b16040fa774bfce0acf65fadd6e0dd"
-                sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:$VERSION"
-            }
-        }
-    }
+    //     stage('Jenkins') {
+    //         agent any
+    //         environment {
+    //             VERSION = sh(returnStdout:true,script:'git log -1 --pretty=format:"%H"').trim() 
+    //         }
+    //         steps {
+    //             sh 'whoami'
+    //             sh 'pwd'
+    //             sh 'which kubectl'
+    //             sh ''
+    //             // sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:beb44ea4d9b16040fa774bfce0acf65fadd6e0dd"
+    //             sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:$VERSION"
+    //         }
+    //     }
+    // }
     
     post { 
         failure { 
