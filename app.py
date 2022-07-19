@@ -12,7 +12,7 @@ def hello_world():
 def hello_name(name):
     return "<p>Hello, " + name + "!</p>"
 
-# # add new route goodbye
-# @app.route("/goodbye/<name>")
-# def goodbye_name(name):
-#     return "<p>Goodbye, " + name + "!</p>"
+# add new route goodbye
+@app.route("/goodbye/<name>")
+def goodbye_name(name):
+    return "<p>Goodbye, " + name + "!</p>"
