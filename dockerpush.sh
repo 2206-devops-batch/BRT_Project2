@@ -13,11 +13,7 @@ if [[ $? -eq 0 ]]; then
 COMMIT="$(git log -1 --pretty=format:"%s")"
 # run this if ROLLBACK is empty
 if [[ -z "$(echo "$COMMIT" | grep -i "rollback")" ]]; then
-echo "inside rollback block"
-# run this if ROLLBACK is called.
-else
-echo "inside else block"
-fi
+echo "Rollback not found in commit message."
 
 # VERSION="$(git log -1 --pretty=format:"%H")"
 # echo $VERSION
@@ -26,6 +22,13 @@ fi
 # docker push "bryonsmith/flaskapp-demo:$VERSION"
 
 # kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
+
+# run this if grep finds ROLLBACK in commit message.
+else
+echo "Found rollback in commit message!"
+# kubectl rollout undo deployment/flask-deployment
+fi
+
 
 
 # build failure
