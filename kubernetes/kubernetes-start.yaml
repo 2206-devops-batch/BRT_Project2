@@ -13,12 +13,15 @@ vpc:
   subnets:
     public:
       us-east-1a: { id: subnet-0c9f1e6a5013fb40b }
-      us-east-1b: { id: subnet-03174f36718026f94 }
-      us-east-1c: { id: subnet-06df83ae55f6314b1 }
+      # us-east-1b: { id: subnet-03174f36718026f94 }
+      # us-east-1c: { id: subnet-06df83ae55f6314b1 }
 
 
 managedNodeGroups:
-- name: worker
+- name: primary-worker
   instanceType: t3.small
   ssh:
-     publicKeyName: Kubernetes_Cluster
+    allow: true
+    publicKeyName: Kubernetes_Cluster
+    sourceSecurityGroupIds: ["sg-0829d33e9e3313dd2"]
+

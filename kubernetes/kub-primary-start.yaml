@@ -26,4 +26,5 @@ nodeGroups:
     ssh:
       allow: true
       publicKeyName: Kubernetes_Cluster
+      sourceSecurityGroupIds: ["sg-0829d33e9e3313dd2"]
 
