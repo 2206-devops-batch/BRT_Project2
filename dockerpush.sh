@@ -9,7 +9,7 @@ echo $COMMIT | grep -i "rollback"
 echo "$?"
 echo "***********************************************"
 # This only runs if pytest passes!
-# if [[ $? -eq 0 ]]; then
+if [[ $? -eq 0 ]]; then
 # VERSION="$(git log -1 --pretty=format:"%H")"
 # echo $VERSION
 # docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
