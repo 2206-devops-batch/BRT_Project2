@@ -23,7 +23,7 @@ nodeGroups:
   - name: primary-worker
     labels: { role: master }
     instanceType: t2.small
-    desiredCapacity: 3
+    # desiredCapacity: 3
     ssh:
       allow: true
       publicKeyName: Kubernetes_Cluster
@@ -32,7 +32,7 @@ nodeGroups:
   - name: worker
     labels: { role: worker }
     instanceType: t2.small
-    desiredCapacity: 3
+    # desiredCapacity: 3
     ssh:
       allow: true
       publicKeyName: Kubernetes_Cluster
