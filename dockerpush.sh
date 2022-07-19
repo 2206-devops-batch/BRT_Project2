@@ -11,7 +11,7 @@ python3 -m pytest test-app.py
 if [[ $? -eq 0 ]]; then
 
 COMMIT="$(git log -1 --pretty=format:"%s")"
-ROLLBACK="$(echo "$COMMIT" | grep -i "rollback")"
+ROLLBACK="${$(echo "$COMMIT" | grep -i "rollback"):-""}"
 # run this if ROLLBACK is empty
 if [[ -z "$ROLLBACK" ]]; then
 echo "inside rollback block"
