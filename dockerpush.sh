@@ -15,18 +15,18 @@ COMMIT="$(git log -1 --pretty=format:"%s")"
 if [[ -z "$(echo "$COMMIT" | grep -i "rollback")" ]]; then
 echo "Rollback not found in commit message."
 
-# VERSION="$(git log -1 --pretty=format:"%H")"
-# echo $VERSION
-# docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
-# echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-# docker push "bryonsmith/flaskapp-demo:$VERSION"
+VERSION="$(git log -1 --pretty=format:"%H")"
+echo $VERSION
+docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
+echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
+docker push "bryonsmith/flaskapp-demo:$VERSION"
 
-# kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
+kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
 
 # run this if grep finds ROLLBACK in commit message.
 else
 echo "Found rollback in commit message!"
-# kubectl rollout undo deployment/flask-deployment
+kubectl rollout undo deployment/flask-deployment
 fi
 
 
