@@ -1,0 +1,26 @@
+# docker-compose.yaml
+version: '3.8'
+services:
+  agent1:
+    build: .
+    privileged: true
+    user: root
+    ports:
+     - "2021:22"
+    container_name: agent1
+    tty: true
+    volumes:
+     - ./agent1:/home/jenkins/agent
+     - ./.ssh:/home/jenkins/.ssh
+  
+  agent2:
+    build: .
+    privileged: true
+    user: root
+    ports:
+     - "2022:22"
+    container_name: agent2
+    tty: true
+    volumes:
+     - ./agent2:/home/jenkins/agent
+     - ./.ssh:/home/jenkins/.ssh
