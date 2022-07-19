@@ -5,9 +5,13 @@ pwd
 python3 -m pytest test-app.py
 
 COMMIT="$(git log -1 --pretty=format:"%s")"
-echo $COMMIT | grep -i "rollback"
-echo "$?"
-echo "***********************************************"
+ROLLBACK="$(echo "$COMMIT" | grep -i "rollback")"
+
+if [ -z "$ROLLBACK" ]; then
+echo "inside rollback block"
+fi
+
+
 # This only runs if pytest passes!
 if [[ $? -eq 0 ]]; then
 # VERSION="$(git log -1 --pretty=format:"%H")"
