@@ -1,4 +1,4 @@
-# Flask Demo
+# CI/CD Flask Demo Pipeline
 
 ## The Team:
 ## Bryon Smith (Team Lead) - Roderick Anderfaas - Timothy Sim
