@@ -24,7 +24,7 @@ docker push "bryonsmith/flaskapp-demo:$VERSION"
 aws eks update-kubeconfig --name flaskapp-v3
 kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
 
-# run this if grep finds ROLLBACK in commit message. 
+# run this if grep finds ROLLBACK in commit message.
 else
 echo "Found rollback in commit message!"
 kubectl rollout undo deployment/flask-deployment
