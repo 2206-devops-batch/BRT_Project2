@@ -21,6 +21,7 @@ docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
 echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
 docker push "bryonsmith/flaskapp-demo:$VERSION"
 
+aws eks update-kubeconfig --name flaskapp-v3
 kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
 
 # run this if grep finds ROLLBACK in commit message.
