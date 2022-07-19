@@ -35,6 +35,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 sh 'which kubectl'
+                sh ''
                 // sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:beb44ea4d9b16040fa774bfce0acf65fadd6e0dd"
                 sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:$VERSION"
             }
