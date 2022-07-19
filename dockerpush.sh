@@ -4,6 +4,10 @@ pwd
 # run python test
 python3 -m pytest test-app.py
 
+COMMIT="$(git log -1 --pretty=format:"%s")"
+grep -i "rollback" $COMMIT
+echo "$?"
+echo "***********************************************"
 # This only runs if pytest passes!
 if [[ $? -eq 0 ]]; then
 VERSION="$(git log -1 --pretty=format:"%H")"
@@ -13,6 +17,7 @@ echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --p
 docker push "bryonsmith/flaskapp-demo:$VERSION"
 
 # kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
+
 
 # build failure
 else
