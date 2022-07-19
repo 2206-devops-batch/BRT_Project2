@@ -9,12 +9,12 @@ grep -i "rollback" $COMMIT
 echo "$?"
 echo "***********************************************"
 # This only runs if pytest passes!
-if [[ $? -eq 0 ]]; then
-VERSION="$(git log -1 --pretty=format:"%H")"
-echo $VERSION
-docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
-echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-docker push "bryonsmith/flaskapp-demo:$VERSION"
+# if [[ $? -eq 0 ]]; then
+# VERSION="$(git log -1 --pretty=format:"%H")"
+# echo $VERSION
+# docker build -t "bryonsmith/flaskapp-demo:$VERSION" . < Dockerfile
+# echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
+# docker push "bryonsmith/flaskapp-demo:$VERSION"
 
 # kubectl set image deployment/flask-deployment flaskapp="bryonsmith/flaskapp-demo:$VERSION"
 
