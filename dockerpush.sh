@@ -5,7 +5,7 @@ pwd
 python3 -m pytest test-app.py
 
 COMMIT="$(git log -1 --pretty=format:"%s")"
-grep -i "rollback" $COMMIT
+echo $COMMIT | grep -i "rollback"
 echo "$?"
 echo "***********************************************"
 # This only runs if pytest passes!
