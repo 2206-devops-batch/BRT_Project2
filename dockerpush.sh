@@ -12,10 +12,10 @@ if [[ $? -eq 0 ]]; then
 
 COMMIT="$(git log -1 --pretty=format:"%s")"
 ROLLBACK="$(echo "$COMMIT" | grep -i "rollback")"
-# if rollback empty run loop
+# run this if ROLLBACK is empty
 if [[ -z "$ROLLBACK" ]]; then
 echo "inside rollback block"
-# run this if rollback is called.
+# run this if ROLLBACK is called.
 else
 echo "inside else block"
 fi
