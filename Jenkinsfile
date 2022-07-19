@@ -40,7 +40,7 @@ pipeline {
     //             sh "kubectl set image 'deployment/flask-deployment' flaskimage=bryonsmith/flaskapp-demo:$VERSION"
     //         }
     //     }
-    // }
+    }
     
     post { 
         failure { 
