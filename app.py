@@ -14,5 +14,5 @@ def hello_name(name):
 
 # add new route goodbye
 @app.route("/goodbye/<name>")
-def hello_name(name):
+def goodbye_name(name):
     return "<p>Goodbye, " + name + "!</p>"
