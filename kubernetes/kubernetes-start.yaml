@@ -19,7 +19,8 @@ vpc:
 
 managedNodeGroups:
 - name: primary-worker
-  instanceType: t3.small
+  instanceType: t3.medium
+  desiredCapacity: 1
   ssh:
     allow: true
     publicKeyName: Kubernetes_Cluster
