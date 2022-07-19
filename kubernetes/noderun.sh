@@ -1,7 +1,7 @@
 minikube start
 minikube status
 minikube ip
-kubectl cluster-info
+kubectl cluster-info 
 
 # run yaml
 kubectl apply -f '/home/webmaster/documents/BRT_Project2/kubernetes/flask-service.yaml'
