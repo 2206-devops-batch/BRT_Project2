@@ -11,7 +11,7 @@ python3 -m pytest test-app.py
 if [[ $? -eq 0 ]]; then
 
 COMMIT="$(git log -1 --pretty=format:"%s")"
-# run this if ROLLBACK is empty
+# run this if ROLLBACK is empty 
 if [[ -z "$(echo "$COMMIT" | grep -i "rollback")" ]]; then
 echo "Rollback not found in commit message."
 
